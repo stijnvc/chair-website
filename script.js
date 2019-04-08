@@ -71,16 +71,12 @@ $(document).ready( function() {
       w = vw;
       h = vw*(imageH/imageW);
     }
-     // Change to 1 on retina screens to see blurry canvas.
-    w = w * scale;
-    h = h * scale;
-
-    // Normalize coordinate system to use css pixels.
+    canvas.width = w*scale;
+    canvas.height = h*scale;
+    canvas.style.width = w+"px";
+    canvas.style.height = h+"px";
     ctx.scale(scale, scale);
-
-    canvas.width = w;
-    canvas.height = h;
-    ctx.drawImage(image, 0, 0, w, h);
+    ctx.drawImage(image, 0, 0, w*scale, h*scale);
   }
 
   function scrollPlay(){
