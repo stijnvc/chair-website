@@ -57,7 +57,7 @@ $(document).ready( function() {
   var ctx = canvas.getContext('2d');
 
   function drawImage(image) {
-    var vw = $(window).width();
+    var vw = viewportWidth();
     var vh = viewportHeight();
     var imageW = image.naturalWidth;
     var imageH = image.naturalHeight;
@@ -97,6 +97,9 @@ $(document).ready( function() {
   }
   function viewportHeight(){
     return Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+  }
+  function viewportWidth(){
+    return Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
   }
   function getDistanceToViewport(element){
     return getPosition(element)-viewportHeight();
