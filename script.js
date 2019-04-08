@@ -102,10 +102,11 @@ $(document).ready( function() {
   }
   function viewportHeight(){
     //return Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-    return window.innerHeight;
+    //return window.innerHeight;
+    return $('#size-reference').height();
   }
   function viewportWidth(){
-    return window.innerWidth;
+  return $('#size-reference').width();
   }
   function getDistanceToViewport(element){
     return getPosition(element)-viewportHeight();
