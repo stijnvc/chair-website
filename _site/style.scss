@@ -21,7 +21,8 @@ section, article {
   }
 }
 div, main, section, h1, h2, h3, h4, h5, h6, p, blockquote {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 header {
   position: absolute;
@@ -37,14 +38,22 @@ header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  align-items: stretch;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
 
-          flex-direction: row-reverse;
+          -webkit-box-orient: horizontal;
+
+          -webkit-box-direction: reverse;
+
+              -ms-flex-direction: row-reverse;
+
+                  flex-direction: row-reverse;
 }
 .flex-item {
   width: 50%;
@@ -63,26 +72,33 @@ header {
 }
 main {
   opacity: 0;
+  -webkit-transition: opacity 1s ease;
   transition: opacity 1s ease;
   section {
     min-height: 34vh;
     .inner {
       opacity: 0;
       overflow: hidden;
-      transform: translateY(40px);
+      -webkit-transform: translateY(40px);
+              transform: translateY(40px);
+      -webkit-transition: opacity .8s ease, -webkit-transform .8s ease;
+      transition: opacity .8s ease, -webkit-transform .8s ease;
       transition: opacity .8s ease, transform .8s ease;
+      transition: opacity .8s ease, transform .8s ease, -webkit-transform .8s ease;
       video, #video {
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translateX(-50%) translateY(-50%) scale(.5);
+        -webkit-transform: translateX(-50%) translateY(-50%) scale(.5);
+                transform: translateX(-50%) translateY(-50%) scale(.5);
         min-width: 100%;
         min-height: 100%;
         width: auto;
         height: auto;
         z-index: -1000;
         overflow: hidden;
-        object-fit: cover;
+        -o-object-fit: cover;
+           object-fit: cover;
       }
     }
     .info {
@@ -92,7 +108,8 @@ main {
   section.active {
     .inner {
       opacity: 1;
-      transform: translateY(0);
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
     }
   }
   #hero {
