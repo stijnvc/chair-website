@@ -110,14 +110,15 @@ $(document).ready( function() {
     return getPosition(element)-viewportHeight();
   }
   function getPosition(element) {
-    element = element[0];
-    var yPosition = 0;
+    // element = element[0];
+    // var yPosition = 0;
+    //
+    // while(element) {
+    //   yPosition += (element.offsetTop - element.scrollTop + element.clientTop);
+    //   element = element.offsetParent;
+    // }
 
-    while(element) {
-      yPosition += (element.offsetTop - element.scrollTop + element.clientTop);
-      element = element.offsetParent;
-    }
-
+    var yPosition = element.offset().top;
     return yPosition;
   }
 
