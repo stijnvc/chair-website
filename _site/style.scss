@@ -48,14 +48,14 @@ header {
     width: 100% !important;
   }
 }
+.wrapper {
+  color: black;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 main {
   opacity: 0;
   transition: opacity 1s ease;
-  .wrapper {
-    color: black;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
   section {
     min-height: 34vh;
     .inner {

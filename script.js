@@ -55,6 +55,7 @@ $(document).ready( function() {
 
   var canvas = document.getElementById('video');
   var ctx = canvas.getContext('2d');
+  var scale = window.devicePixelRatio;
 
   function drawImage(image) {
     var vw = viewportWidth();
@@ -70,6 +71,13 @@ $(document).ready( function() {
       w = vw;
       h = vw*(imageH/imageW);
     }
+     // Change to 1 on retina screens to see blurry canvas.
+    w = w * scale;
+    h = h * scale;
+
+    // Normalize coordinate system to use css pixels.
+    ctx.scale(scale, scale);
+
     canvas.width = w;
     canvas.height = h;
     ctx.drawImage(image, 0, 0, w, h);
