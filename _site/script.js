@@ -101,10 +101,11 @@ $(document).ready( function() {
     return $(document).scrollTop();
   }
   function viewportHeight(){
-    return Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    //return Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    return window.innerHeight;
   }
   function viewportWidth(){
-    return Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    return window.innerWidth;
   }
   function getDistanceToViewport(element){
     return getPosition(element)-viewportHeight();
