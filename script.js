@@ -84,7 +84,7 @@ $(document).ready( function() {
 
     var frameNumber  = 45;
     if(getDistanceToViewport($('#parts')) > scrollDistance()){
-      var frameNumber  = Math.round(scrollDistance()*frameNumber/getDistanceToViewport($('#parts')));
+      var frameNumber  = Math.max(0, Math.round(scrollDistance()*frameNumber/getDistanceToViewport($('#parts'))));
     }
 
     drawImage(frames[frameNumber]);
