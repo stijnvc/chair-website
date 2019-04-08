@@ -55,7 +55,7 @@ $(document).ready( function() {
 
   var canvas = document.getElementById('video');
   var ctx = canvas.getContext('2d');
-  var scale = window.devicePixelRatio;
+  var scale = 2;
 
   function drawImage(image) {
     var vw = viewportWidth();
@@ -73,10 +73,11 @@ $(document).ready( function() {
     }
     canvas.width = w*scale;
     canvas.height = h*scale;
-    canvas.style.width = w+"px";
-    canvas.style.height = h+"px";
+    // canvas.style.width = w+"px";
+    // canvas.style.height = h+"px";
+    console.log(h+"px");
     ctx.scale(scale, scale);
-    ctx.drawImage(image, 0, 0, w*scale, h*scale);
+    ctx.drawImage(image, 0, 0, w, h);
   }
 
   function scrollPlay(){
