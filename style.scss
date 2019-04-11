@@ -1,12 +1,23 @@
+$breaking-point-1: 1250px;
 $breaking-point-2: 1000px;
 $breaking-point-3: 750px;
+$breaking-point-4: 500px;
 
 body {
   background: white;
-  font-size: 18px;
+  font-size: 20px;
   font-family: "Akzidenz Grotesk Pro", sans-serif;
   line-height: 1.4em;
   font-weight: 300;
+  @media (max-width: $breaking-point-2) {
+    font-size: 18px;
+  }
+  @media (max-width: $breaking-point-3) {
+    font-size: 20px;
+  }
+  @media (max-width: $breaking-point-4) {
+    font-size: 18px;
+  }
 }
 #size-reference {
   height: 100vh;
@@ -81,19 +92,35 @@ header {
           flex-direction: row;
     a.float {
       display: block;
+      float: left;
       padding: 35px;
       color: black;
+      @media (max-width: $breaking-point-3) {
+        padding: 20px;
+      }
       img, .text {
         display: inline-block;
         vertical-align: middle;
+        @media (max-width: $breaking-point-3) {
+          display: block;
+          text-align: center;
+          margin: 0 auto;
+        }
       }
       .text {
         margin-left: 25px;
         line-height: 1;
+        @media (max-width: $breaking-point-3) {
+          margin-left: 0;
+          margin-top: 15px;
+        }
         h1 {
           margin-bottom: 5px;
           font-size: 1.8em;
           margin-top: 0;
+          @media (max-width: $breaking-point-3) {
+            font-size: 1.4em;
+          }
         }
       }
     }
@@ -104,6 +131,9 @@ header {
     }
     img {
       height: 100px;
+      @media (max-width: $breaking-point-3) {
+        height: 60px;
+      }
     }
   }
 }
@@ -134,25 +164,11 @@ header {
 }
 main {
   height: 0;
-  transform: translateY(15px);
   section {
     min-height: 34vh;
     overflow: hidden;
     .inner {
       overflow: hidden;
-      video, #video {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        -webkit-transform: translateX(-50%) translateY(-50%) scale(.5);
-                transform: translateX(-50%) translateY(-50%) scale(.5);
-        min-width: 100%;
-        min-height: 100%;
-        width: auto;
-        height: auto;
-        z-index: -1000;
-        overflow: hidden;
-      }
       .info {
         z-index: 20;
         width: 40%;
@@ -181,7 +197,10 @@ main {
       }
     }
     .info {
-      padding: 2em 3em;
+      padding: 1em 1.5em;
+      @media (max-width: $breaking-point-3) {
+        padding: 1em 1.3em;
+      }
     }
   }
   section.active {
@@ -192,9 +211,6 @@ main {
     position: relative;
     width: 100%;
     .inner {
-      background-image: url(video/placeholder.png);
-      background-size: cover;
-      background-position: center;
       height: 100vh;
       width: 100%;
       top: 0;
@@ -202,6 +218,25 @@ main {
       position: fixed;
       z-index: 200;
       padding-top: 150px;
+      #video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translateX(-50%) translateY(-49%) scale(.5);
+                transform: translateX(-50%) translateY(-49%) scale(.5);
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -1000;
+        overflow: hidden;
+        -webkit-transition: transform 1s ease-out;
+        transition: transform 1s ease-out;
+      }
+      #video.move-up {
+      -webkit-transform: translateX(-50%) translateY(-50%) scale(.5);
+              transform: translateX(-50%) translateY(-50%) scale(.5);
+      }
     }
   }
   #hero.absolute {
@@ -222,11 +257,10 @@ main {
 }
 .fade {
   opacity: 0;
-  -webkit-transition: opacity 1s ease-out, transform 1s ease-out;
-  transition: opacity 1s ease-out, transform 1s ease-out;
+  -webkit-transition: opacity 1s ease-out;
+  transition: opacity 1s ease-out;
 }
 .fade-in {
   height: auto;
   opacity: 1;
-  transform: translateY(0px);
 }

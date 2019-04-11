@@ -32,6 +32,7 @@ $(document).ready( function() {
   preload();
   function init() {
     window.requestAnimationFrame(scrollPlay);
+    $('#video').addClass('move-up');
     $('main').addClass('fade-in');
     $('.loader').fadeOut(100);
   }
