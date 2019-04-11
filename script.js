@@ -1,6 +1,20 @@
 $(document).ready( function() {
+  $('body').addClass('fade-in');
+  $('.loader').addClass('slide-animation');
+
+  var canvas = document.getElementById('video');
+  var ctx = canvas.getContext('2d');
+  var scale = 2;
+
   var frames = [];
   var frame = 0;
+
+  // var image = new Image();
+  // image.src = 'video/placeholder.png';
+  // image.onload = function(){
+  //   drawImage(image);
+  // };
+
   function preload() {
     var image = new Image();
     //image.crossOrigin = "Anonymous";
@@ -16,10 +30,10 @@ $(document).ready( function() {
   preload();
   function init() {
     window.requestAnimationFrame(scrollPlay);
-
+    $('main').addClass('fade-in');
+    $('.loader').fadeOut(100);
   }
 
-  $('main').addClass('fade-in');
 
   // Get video properties
   var frameNumber = 0;
@@ -34,28 +48,28 @@ $(document).ready( function() {
         $('#hero').removeClass('absolute');
       }
 
-      if(getDistanceToViewport($('#parts'))+triggerBuffer < scrollDistance() && $('#parts').hasClass('active') == false){
-        $('#parts').addClass('active');
-      }
-      else if(getDistanceToViewport($('#parts'))-triggerBuffer > scrollDistance() && $('#parts').hasClass('active') == true){
-        $('#parts').removeClass('active');
-      }
-
-      if(getDistanceToViewport($('#scroll'))+triggerBuffer < scrollDistance() && $('#scroll').hasClass('active') == false){
-        $('#scroll').addClass('active');
-      }
-      else if(getDistanceToViewport($('#scroll'))-triggerBuffer > scrollDistance() && $('#scroll').hasClass('active') == true){
-        $('#scroll').removeClass('active');
-      }
-      window.requestAnimationFrame(scrollProgress);
+      // if(getDistanceToViewport($('#parts'))+triggerBuffer < scrollDistance() && $('#parts').hasClass('active') == false){
+      //   $('#parts').addClass('active');
+      // }
+      // else if(getDistanceToViewport($('#parts'))-triggerBuffer > scrollDistance() && $('#parts').hasClass('active') == true){
+      //   $('#parts').removeClass('active');
+      // }
+      //
+      // if(getDistanceToViewport($('#scroll'))+triggerBuffer < scrollDistance() && $('#scroll').hasClass('active') == false){
+      //   $('#scroll').addClass('active');
+      // }
+      // else if(getDistanceToViewport($('#scroll'))-triggerBuffer > scrollDistance() && $('#scroll').hasClass('active') == true){
+      //   $('#scroll').removeClass('active');
+      // }
+      //window.requestAnimationFrame(scrollProgress);
 
   };
 
-  window.requestAnimationFrame(scrollProgress);
+  $( window ).scroll(function() {
+    scrollProgress();
+  });
 
-  var canvas = document.getElementById('video');
-  var ctx = canvas.getContext('2d');
-  var scale = 2;
+  //window.requestAnimationFrame(scrollProgress);
 
   function drawImage(image) {
     var vw = viewportWidth();
@@ -75,7 +89,6 @@ $(document).ready( function() {
     canvas.height = h*scale;
     // canvas.style.width = w+"px";
     // canvas.style.height = h+"px";
-    console.log(h+"px");
     ctx.scale(scale, scale);
     ctx.drawImage(image, 0, 0, w, h);
   }
@@ -83,8 +96,8 @@ $(document).ready( function() {
   function scrollPlay(){
 
     var frameNumber  = 45;
-    if(getDistanceToViewport($('#parts')) > scrollDistance()){
-      var frameNumber  = Math.max(0, Math.round(scrollDistance()*frameNumber/getDistanceToViewport($('#parts'))));
+    if(getDistanceToViewport($('#parts'))+100 > scrollDistance()){
+      var frameNumber  = Math.max(0, Math.round(scrollDistance()*frameNumber/(getDistanceToViewport($('#parts'))+100)));
     }
 
     drawImage(frames[frameNumber]);

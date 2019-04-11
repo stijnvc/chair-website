@@ -8,18 +8,39 @@
     <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href="style.min.css">
   </head>
-  <body>
+  <body class="fade">
     <div id="size-reference"></div>
     <header>
       <div class="wrapper">
-        <h1>Header</h1>
-      </div>
+        <nav class="flex-container">
+          <div class="flex-item design">
+            <a href="#" class="float">
+              <img alt="chair nav icon" src="img/icon_chair-01.svg">
+              <div class="text">
+                <h1>Chair X-1</h1>
+                <span>Design</span>
+              </div>
+            </a>
+          </div>
+          <div class="flex-item process">
+            <a href="#" class="float">
+              <img alt="process nav icon" src="img/icon_process-01.svg">
+              <div class="text">
+                <h1>Process</h1>
+                <span>Behind the Design</span>
+              </div>
+            </a>
+          </div>
+      </nav>
     </header>
-    <main>
-      <section class="active" id="hero">
+    <div class="loader">
+      <h1>Chair X-1</h1>
+    </div>
+    <main class="fade">
+      <section id="hero">
         <div class="inner">
           <div class="wrapper">
-          <h1>text</h1>
+          <h1></h1>
           <canvas id="video">
               Canvas is not supported in your browser
           </canvas>
@@ -33,7 +54,7 @@
       <section id="parts">
         <div class="inner wrapper">
           <div class="flex-container">
-            <div class="flex-item image">
+            <div style="background-image: url('img/plaatje.jpg')" class="flex-item image">
             </div>
             <div class="flex-item info">
               <h1>Title</h3>
