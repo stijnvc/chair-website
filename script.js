@@ -2,7 +2,7 @@ $(document).ready( function() {
   $('body').addClass('fade-in');
 
   $('.loader').addClass('slide-animation');
-  setTimeout(function(){  $('.loader span').addClass('fade-in'); }, 3000);
+  setTimeout(function(){  $('.loader span').addClass('fade-in'); }, 2000);
 
   var canvas = document.getElementById('video');
   var ctx = canvas.getContext('2d');

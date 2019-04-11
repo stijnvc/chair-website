@@ -113,7 +113,7 @@ header {
   left: 0;
   top: 45vh;
   z-index: 100;
-  transform: translateX(-10px);
+  transform: translateY(15px);
   transition: transform 8s ease-out;
   text-align: center;
   h1 {
@@ -125,7 +125,7 @@ header {
   }
 }
 .loader.slide-animation {
-  transform: translateX(10px);
+  transform: translateY(-15px);
 }
 .wrapper {
   color: black;
