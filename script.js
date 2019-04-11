@@ -1,5 +1,4 @@
 $(document).ready( function() {
-  $('body').addClass('fade-in');
 
   $('.loader').addClass('slide-animation');
   setTimeout(function(){  $('.loader span').addClass('fade-in'); }, 2000);
@@ -11,11 +10,11 @@ $(document).ready( function() {
   var frames = [];
   var frame = 0;
 
-  // var image = new Image();
-  // image.src = 'video/placeholder.png';
-  // image.onload = function(){
-  //   drawImage(image);
-  // };
+  var image = new Image();
+  image.src = 'video/placeholder.png';
+  image.onload = function(){
+    drawImage(image);
+  };
 
   function preload() {
     var image = new Image();
@@ -32,9 +31,8 @@ $(document).ready( function() {
   preload();
   function init() {
     window.requestAnimationFrame(scrollPlay);
-    $('#video').addClass('move-up');
-    $('main').addClass('fade-in');
     $('.loader').fadeOut(100);
+    $('main').addClass('fade-in');
   }
 
 
@@ -81,13 +79,16 @@ $(document).ready( function() {
     var imageH = image.naturalHeight;
     var w = imageW;
     var h = imageH;
-    if (imageW/imageH >= vw/vh){
-      h = vh;
-      w = vh*(imageW/imageH);
-    }else{
-      w = vw;
-      h = vw*(imageH/imageW);
-    }
+    // if (imageW/imageH >= vw/vh){
+    //   h = vh;
+    //   w = vh*(imageW/imageH);
+    // }else{
+    //   w = vw;
+    //   h = vw*(imageH/imageW);
+    // }
+    h = vh;
+    w = vh*(imageW/imageH);
+
     canvas.width = w*scale;
     canvas.height = h*scale;
     // canvas.style.width = w+"px";
@@ -99,8 +100,8 @@ $(document).ready( function() {
   function scrollPlay(){
 
     var frameNumber  = 45;
-    if(getDistanceToViewport($('#parts'))+100 > scrollDistance()){
-      var frameNumber  = Math.max(0, Math.round(scrollDistance()*frameNumber/(getDistanceToViewport($('#parts'))+100)));
+    if(getDistanceToViewport($('#parts'))+150 > scrollDistance()){
+      var frameNumber  = Math.max(0, Math.round(scrollDistance()*frameNumber/(getDistanceToViewport($('#parts'))+150)));
     }
 
     drawImage(frames[frameNumber]);
