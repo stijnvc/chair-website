@@ -134,6 +134,7 @@ header {
 }
 main {
   height: 0;
+  transform: translateY(15px);
   section {
     min-height: 34vh;
     overflow: hidden;
@@ -221,10 +222,11 @@ main {
 }
 .fade {
   opacity: 0;
-  -webkit-transition: opacity 1s ease;
-  transition: opacity 1s ease;
+  -webkit-transition: opacity 1s ease-out, transform 1s ease-out;
+  transition: opacity 1s ease-out, transform 1s ease-out;
 }
 .fade-in {
   height: auto;
   opacity: 1;
+  transform: translateY(0px);
 }
