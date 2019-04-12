@@ -1,6 +1,8 @@
 $(document).ready( function() {
 
-  var loaderFadeIn = setTimeout(function(){  $('.loader').addClass('fade-in'); }, 1000);
+  $('.loader').addClass('fade-in');
+  $('#video').addClass('fade-50');
+  var loaderFadeIn = setTimeout(function(){  $('.loader span').addClass('fade-in'); }, 1000);
 
   var canvas = document.getElementById('video');
   var ctx = canvas.getContext('2d');
@@ -32,7 +34,8 @@ $(document).ready( function() {
     window.requestAnimationFrame(scrollPlay);
     clearTimeout(loaderFadeIn);
     $('.loader').removeClass('fade-in');
-    $('.loader').hide(0);
+    $('#video').addClass('fade-in');
+    $('.loader span').hide(0);
     $('main').addClass('fade-in');
   }
 

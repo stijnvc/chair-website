@@ -3,10 +3,13 @@ $breaking-point-2: 1000px;
 $breaking-point-3: 750px;
 $breaking-point-4: 500px;
 
-$max-width: 1800px;
+$max-width: 1700px;
 @font-face {
   font-family: 'webfont';
   src: url('webfont.woff') format('woff');
+}
+html{
+  overflow-y: scroll;
 }
 body {
   background: rgb(245,245,245);
@@ -141,10 +144,10 @@ header {
   }
 }
 .loader {
-  position: fixed;
+  position: absolute;
   width: 100%;
   left: 0;
-  top: 45vh;
+  top: 40vh;
   z-index: 250;
   text-align: center;
   h1 {
@@ -364,10 +367,13 @@ main {
 }
 .fade {
   opacity: 0;
+  -webkit-transition: opacity 1s ease;
+  transition: opacity 1s ease;
+}
+.fade-50 {
+  opacity: .5;
 }
 .fade-in {
   height: auto;
   opacity: 1;
-  -webkit-transition: opacity 1s ease-out;
-  transition: opacity 1s ease-out;
 }
