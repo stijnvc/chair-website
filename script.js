@@ -1,7 +1,6 @@
 $(document).ready( function() {
 
-  $('.loader').addClass('slide-animation');
-  setTimeout(function(){  $('.loader span').addClass('fade-in'); }, 2000);
+  var loaderFadeIn = setTimeout(function(){  $('.loader').addClass('fade-in'); }, 1000);
 
   var canvas = document.getElementById('video');
   var ctx = canvas.getContext('2d');
@@ -31,7 +30,9 @@ $(document).ready( function() {
   preload();
   function init() {
     window.requestAnimationFrame(scrollPlay);
-    $('.loader').fadeOut(100);
+    clearTimeout(loaderFadeIn);
+    $('.loader').removeClass('fade-in');
+    $('.loader').hide(0);
     $('main').addClass('fade-in');
   }
 
@@ -43,9 +44,9 @@ $(document).ready( function() {
 
       var triggerBuffer = viewportHeight()/3;
       // Hero video parent element position
-      if(getDistanceToViewport($('#parts')) < scrollDistance() && $('#hero').hasClass('absolute') == false){
+      if($('#hero').height()-viewportHeight() < scrollDistance() && $('#hero').hasClass('absolute') == false){
         $('#hero').addClass('absolute');
-      }else if(getDistanceToViewport($('#parts')) > scrollDistance() && $('#hero').hasClass('absolute') == true){
+      }else if($('#hero').height()-viewportHeight() > scrollDistance() && $('#hero').hasClass('absolute') == true){
         $('#hero').removeClass('absolute');
       }
 
@@ -99,7 +100,7 @@ $(document).ready( function() {
 
   function scrollPlay(){
 
-    var frameNumber  = 45;
+    var frameNumber  = 36;
     if(getDistanceToViewport($('#parts'))+150 > scrollDistance()){
       var frameNumber  = Math.max(0, Math.round(scrollDistance()*frameNumber/(getDistanceToViewport($('#parts'))+150)));
     }

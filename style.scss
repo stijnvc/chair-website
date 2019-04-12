@@ -7,7 +7,7 @@ body {
   background: white;
   font-size: 24px;
   font-family: "Akzidenz Grotesk Pro", "Akzidenz-Grotesk Pro", sans-serif;
-  line-height: 1.4em;
+  line-height: 1.4;
   font-weight: 300;
   @media (max-width: $breaking-point-2) {
     font-size: 20px;
@@ -52,6 +52,7 @@ div, main, section, h1, h2, h3, h4, h5, h6, p, blockquote {
 }
 h1,h2,h3 {
   font-weight: 300;
+  line-height: 1.2;
 }
 h1 {
   font-size: 2em;
@@ -111,6 +112,9 @@ header {
         @media (max-width: $breaking-point-3) {
           font-size: .9em;
         }
+        @media (max-width: $breaking-point-4) {
+          font-size: .75em;
+        }
       }
     }
     .design {
@@ -131,9 +135,7 @@ header {
   width: 100%;
   left: 0;
   top: 45vh;
-  z-index: 100;
-  transform: translateY(15px);
-  transition: transform 8s ease-out;
+  z-index: 250;
   text-align: center;
   h1 {
     font-size: 3em;
@@ -142,9 +144,6 @@ header {
     font-size: 1.5em;
     margin-top: 20px;
   }
-}
-.loader.slide-animation {
-  transform: translateY(-15px);
 }
 .wrapper {
   color: black;
@@ -171,7 +170,6 @@ main {
       }
   }
   section {
-    min-height: 34vh;
     overflow: hidden;
     .inner {
       overflow: hidden;
@@ -289,10 +287,10 @@ main {
 }
 .fade {
   opacity: 0;
-  -webkit-transition: opacity 1s ease-out;
-  transition: opacity 1s ease-out;
 }
 .fade-in {
   height: auto;
   opacity: 1;
+  -webkit-transition: opacity 1s ease-out;
+  transition: opacity 1s ease-out;
 }
