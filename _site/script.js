@@ -20,7 +20,7 @@ $(document).ready( function() {
     //image.crossOrigin = "Anonymous";
     image.src = 'video/frames/frame' + pad(frame) + '.jpg';
     frames.push(image);
-    if(frame < 45){
+    if(frame < 36){
       frame = frame+1;
       image.onload = preload;
     }else{
