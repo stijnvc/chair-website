@@ -3,8 +3,10 @@ $breaking-point-2: 1000px;
 $breaking-point-3: 750px;
 $breaking-point-4: 500px;
 
+$max-width: 1800px;
+
 body {
-  background: #eee;
+  background: rgb(245,245,245);
   font-size: 24px;
   font-family: "Akzidenz Grotesk Pro", "Akzidenz-Grotesk Pro", sans-serif;
   line-height: 1.4;
@@ -47,6 +49,9 @@ section, article {
 a {
   text-decoration: none;
   color: rgba(0,0,0,.8);
+}
+.dark a {
+  color: rgba(255,255,255,.8);
 }
 div, main, section, h1, h2, h3, h4, h5, h6, p, blockquote {
   -webkit-box-sizing: border-box;
@@ -148,16 +153,16 @@ header {
   }
 }
 .wrapper {
-  max-width: 1920px;
-  margin: 0 auto;
+  max-width: $max-width;
+  margin-left: auto;
+  margin-right: auto;
   overflow: hidden;
 }
 main {
-  max-width: 1920px;
+  max-width: $max-width;
   margin: 0 auto;
   height: 100vh;
   overflow: hidden;
-  background-color: white;
   .image {
     background-position: center;
     background-size: cover;
@@ -174,10 +179,22 @@ main {
         background-position: center;
       }
   }
+  .dark {
+    color: rgba(255,255,255,.8);
+    background-color: rgba(0,0,0,.8);
+  }
   section {
     overflow: hidden;
+    margin-bottom: 2em;
+    background-color: white;
     .inner {
       overflow: hidden;
+    }
+    .align-text-right {
+      text-align: right;
+      @media (max-width: $breaking-point-3) {
+        background-color: rgba(0,0,0,.15);
+      }
     }
     .flex-container.center-x {
       justify-content: center;
@@ -200,6 +217,10 @@ main {
     }
     .content.size-50 {
       width: 50%;
+      @media (max-width: $breaking-point-3) {
+        width: 100% !important;
+        text-align: center;
+      }
     }
     .content.size-40 {
       width: 40%;
@@ -220,30 +241,39 @@ main {
       width: 25%;
     }
     .content {
-      padding: 1em 1.5em;
+      padding: 1em 2em;
     }
+  }
+  section:last-child {
+    margin-bottom: 0;
   }
   section.image {
     height: 0;
     overflow: hidden;
     padding-top: 56.25%;
     position: relative;
-    @media (max-width: $breaking-point-2) {
+    @media (max-width: $breaking-point-1) {
       height: auto;
-      min-height: 50vh;
       padding: 0;
       padding-bottom: 70%;
     }
+    @media (max-width: $breaking-point-2) {
+      padding-bottom: 80%;
+    }
+    @media (max-width: $breaking-point-3) {
+      padding-bottom: 110%;
+    }
+    @media (max-width: $breaking-point-4) {
+      padding-bottom: 150%;
+    }
+  }
+  section.image.image-text {
     .flex-container {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      @media (max-width: $breaking-point-3) {
-        position: static;
-        height: auto;
-      }
     }
   }
   section.active {
@@ -257,7 +287,7 @@ main {
       height: 100vh;
       width: 100%;
       top: 0;
-      max-width: 1920px;
+      max-width: $max-width;
       overflow: hidden;
       position: fixed;
       z-index: 200;
@@ -284,11 +314,49 @@ main {
       top: auto;
     }
   }
-  #parts {
-
+  @keyframes rotation {
+    from {
+      transform: translateX(-50%) translateY(-50%) rotate(0deg);
+    }
+    to {
+      transform: translateX(-50%) translateY(-50%) rotate(360deg);
+    }
   }
-  #scroll {
-
+  section#colors.image {
+    //padding-bottom: 100%;
+    //min-height: auto;
+  }
+  #colors::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    //width: 100%;
+    //height: 100%;
+    min-width: $max-width;
+    min-height: $max-width;
+    @media (max-width: $breaking-point-1) {
+      min-width: 110vw;
+      min-height: 110vw;
+    }
+    @media (max-width: $breaking-point-2) {
+      min-width: 120vw;
+      min-height: 120vw;
+    }
+    @media (max-width: $breaking-point-3) {
+      min-width: 140vw;
+      min-height: 140vw;
+    }
+    @media (max-width: $breaking-point-4) {
+      min-width: 160vw;
+      min-height: 160vw;
+    }
+    background-image: url('img/colors.jpg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    animation: 60s infinite linear rotation;
   }
 }
 .fade {

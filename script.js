@@ -101,8 +101,8 @@ $(document).ready( function() {
   function scrollPlay(){
 
     var frameNumber  = 36;
-    if(getDistanceToViewport($('#parts'))+150 > scrollDistance()){
-      var frameNumber  = Math.max(0, Math.round(scrollDistance()*frameNumber/(getDistanceToViewport($('#parts'))+150)));
+    if($('#hero').height()-viewportHeight()+150 > scrollDistance()){
+      var frameNumber  = Math.max(0, Math.round(scrollDistance()*frameNumber/($('#hero').height()-viewportHeight()+150)));
     }
 
     drawImage(frames[frameNumber]);
@@ -124,7 +124,8 @@ $(document).ready( function() {
     return $('#size-reference').height();
   }
   function viewportWidth(){
-  return $('#size-reference').width();
+  //return $('#size-reference').width();
+    return $( window ).width();
   }
   function getDistanceToViewport(element){
     return getPosition(element)-viewportHeight();
