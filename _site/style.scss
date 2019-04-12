@@ -4,11 +4,14 @@ $breaking-point-3: 750px;
 $breaking-point-4: 500px;
 
 $max-width: 1800px;
-
+@font-face {
+  font-family: 'webfont';
+  src: url('webfont.woff') format('woff');
+}
 body {
   background: rgb(245,245,245);
   font-size: 24px;
-  font-family: "Akzidenz Grotesk Pro", "Akzidenz-Grotesk Pro", sans-serif;
+  font-family: "webfont","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   line-height: 1.4;
   font-weight: 300;
   color: rgba(0,0,0,.8);
