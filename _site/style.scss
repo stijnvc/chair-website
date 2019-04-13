@@ -163,7 +163,6 @@ header {
 main {
   max-width: $max-width;
   margin: 0 auto;
-  height: 100vh;
   overflow: hidden;
   .image {
     background-position: center;
@@ -367,6 +366,5 @@ main {
   transition: opacity 1s ease;
 }
 .fade-in {
-  height: auto;
   opacity: 1;
 }
