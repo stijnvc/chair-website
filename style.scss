@@ -147,15 +147,11 @@ header {
   position: absolute;
   width: 100%;
   left: 0;
-  top: 40vh;
+  top: 45vh;
   z-index: 250;
   text-align: center;
-  h1 {
-    font-size: 3em;
-  }
   span {
     font-size: 1.5em;
-    margin-top: 20px;
   }
 }
 .wrapper {
@@ -369,9 +365,6 @@ main {
   opacity: 0;
   -webkit-transition: opacity 1s ease;
   transition: opacity 1s ease;
-}
-.fade-50 {
-  opacity: .5;
 }
 .fade-in {
   height: auto;

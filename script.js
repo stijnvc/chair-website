@@ -1,41 +1,62 @@
 $(document).ready( function() {
 
-  $('.loader').addClass('fade-in');
-  $('#video').addClass('fade-50');
-  var loaderFadeIn = setTimeout(function(){  $('.loader span').addClass('fade-in'); }, 1000);
+  var loaderFadeIn = setTimeout(function(){  $('.loader').addClass('fade-in'); }, 2500);
+  $('#video').addClass('fade-in');
 
   var canvas = document.getElementById('video');
   var ctx = canvas.getContext('2d');
   var scale = 2;
 
+  var preload = [];
   var frames = [];
-  var frame = 0;
+  //var frame = 0;
 
   var image = new Image();
   image.src = 'video/placeholder.png';
   image.onload = function(){
     drawImage(image);
+    window.requestAnimationFrame(function placeholder(){
+      drawImage(image);
+      window.requestAnimationFrame(placeholder);
+    });
   };
 
-  function preload() {
-    var image = new Image();
-    //image.crossOrigin = "Anonymous";
-    image.src = 'video/frames/frame' + pad(frame) + '.jpg';
-    frames.push(image);
-    if(frame < 36){
-      frame = frame+1;
-      image.onload = preload;
-    }else{
-      image.onload = init;
-    }
+  // function preload() {
+  //   var image = new Image();
+  //   //image.crossOrigin = "Anonymous";
+  //   image.src = 'video/frames/frame' + pad(frame) + '.jpg';
+  //   frames.push(image);
+  //   if(frame < 36){
+  //     frame = frame+1;
+  //     image.onload = preload;
+  //   }else{
+  //     image.onload = init;
+  //   }
+  // }
+  // preload();
+
+  for (var frame = 0; frame < 37; frame++) {
+    preload.push('video/frames/frame' + pad(frame) + '.jpg');
   }
-  preload();
+  var promises = [];
+  for (var i = 0; i < preload.length; i++) {
+      (function(url, promise) {
+          var img = new Image();
+          img.onload = function() {
+            promise.resolve();
+          };
+          img.src = url;
+          frames[i] = img;
+      })(preload[i], promises[i] = $.Deferred());
+  }
+  $.when.apply($, promises).done(function() {
+    init();
+  });
+
   function init() {
     window.requestAnimationFrame(scrollPlay);
     clearTimeout(loaderFadeIn);
     $('.loader').removeClass('fade-in');
-    $('#video').addClass('fade-in');
-    $('.loader span').hide(0);
     $('main').addClass('fade-in');
   }
 
