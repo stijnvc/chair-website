@@ -46,15 +46,21 @@ body {
 .flex-container.reverse {
   flex-direction: row-reverse;
 }
+a {
+  text-decoration: none;
+  color: rgba(0,0,0,.8);
+}
 section, article {
   p, blockquote, img {
     display: block;
     margin: 1em 0;
   }
-}
-a {
-  text-decoration: none;
-  color: rgba(0,0,0,.8);
+  a {
+    color: rgba(0, 100, 255, .8);
+  }
+  a:hover {
+    text-decoration: underline;
+  }
 }
 .dark a {
   color: rgba(255,255,255,.8);
@@ -358,6 +364,11 @@ main {
     background-position: center;
     background-repeat: no-repeat;
     animation: 60s infinite linear rotation;
+  }
+  #downloads {
+    a {
+      display: inline-block;
+    }
   }
 }
 .fade {

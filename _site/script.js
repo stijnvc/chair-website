@@ -60,43 +60,6 @@ $(document).ready( function() {
     $('main').addClass('fade-in');
   }
 
-
-  // Get video properties
-  var frameNumber = 0;
-
-  function scrollProgress() {
-
-      var triggerBuffer = viewportHeight()/3;
-      // Hero video parent element position
-      if($('#hero').height()-viewportHeight() < scrollDistance() && $('#hero').hasClass('absolute') == false){
-        $('#hero').addClass('absolute');
-      }else if($('#hero').height()-viewportHeight() > scrollDistance() && $('#hero').hasClass('absolute') == true){
-        $('#hero').removeClass('absolute');
-      }
-
-      // if(getDistanceToViewport($('#parts'))+triggerBuffer < scrollDistance() && $('#parts').hasClass('active') == false){
-      //   $('#parts').addClass('active');
-      // }
-      // else if(getDistanceToViewport($('#parts'))-triggerBuffer > scrollDistance() && $('#parts').hasClass('active') == true){
-      //   $('#parts').removeClass('active');
-      // }
-      //
-      // if(getDistanceToViewport($('#scroll'))+triggerBuffer < scrollDistance() && $('#scroll').hasClass('active') == false){
-      //   $('#scroll').addClass('active');
-      // }
-      // else if(getDistanceToViewport($('#scroll'))-triggerBuffer > scrollDistance() && $('#scroll').hasClass('active') == true){
-      //   $('#scroll').removeClass('active');
-      // }
-      //window.requestAnimationFrame(scrollProgress);
-
-  };
-
-  $( window ).scroll(function() {
-    scrollProgress();
-  });
-
-  //window.requestAnimationFrame(scrollProgress);
-
   function drawImage(image) {
     var vw = viewportWidth();
     var vh = viewportHeight();
@@ -104,25 +67,25 @@ $(document).ready( function() {
     var imageH = image.naturalHeight;
     var w = imageW;
     var h = imageH;
-    // if (imageW/imageH >= vw/vh){
-    //   h = vh;
-    //   w = vh*(imageW/imageH);
-    // }else{
-    //   w = vw;
-    //   h = vw*(imageH/imageW);
-    // }
     h = vh;
     w = vh*(imageW/imageH);
 
     canvas.width = w*scale;
     canvas.height = h*scale;
-    // canvas.style.width = w+"px";
-    // canvas.style.height = h+"px";
     ctx.scale(scale, scale);
     ctx.drawImage(image, 0, 0, w, h);
   }
 
   function scrollPlay(){
+
+    var triggerBuffer = viewportHeight()/3;
+    // Hero video parent element position
+    if($('#hero').height()-viewportHeight() < scrollDistance() && $('#hero').hasClass('absolute') == false){
+      $('#hero').addClass('absolute');
+    }else if($('#hero').height()-viewportHeight() > scrollDistance() && $('#hero').hasClass('absolute') == true){
+      $('#hero').removeClass('absolute');
+    }
+
 
     var frameNumber  = 36;
     if($('#hero').height()-viewportHeight()+150 > scrollDistance()){
