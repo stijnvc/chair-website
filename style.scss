@@ -365,7 +365,7 @@ main {
     background-repeat: no-repeat;
     animation: 60s infinite linear rotation;
   }
-  #download-this-chair {
+  #download-this-chair, #view-process {
     background-image: url('img/download.jpg');
     @media (max-width: $breaking-point-3) {
       background-image: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),  url('img/download.jpg');
