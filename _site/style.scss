@@ -296,7 +296,7 @@ main {
       top: 0;
       max-width: $max-width;
       overflow: hidden;
-      position: fixed;
+      position: absolute;
       z-index: 200;
       padding-top: 150px;
       #video {
@@ -312,6 +312,11 @@ main {
         z-index: -1000;
         overflow: hidden;
       }
+    }
+  }
+  #hero.fixed {
+    .inner {
+      position: fixed;
     }
   }
   #hero.absolute {
@@ -365,7 +370,7 @@ main {
     background-repeat: no-repeat;
     animation: 60s infinite linear rotation;
   }
-  #download-this-chair, #view-process {
+  #download-this-chair {
     background-image: url('img/download.jpg');
     @media (max-width: $breaking-point-3) {
       background-image: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),  url('img/download.jpg');
@@ -376,9 +381,26 @@ main {
       }
     }
   }
+  #view-process {
+    @media (max-width: $breaking-point-3) {
+      background-position: 70% center;
+      .flex-container.center-y {
+        align-items: flex-start;
+      }
+    }
+    .content {
+      @media (min-width: $breaking-point-1) {
+        margin-left: 3em;
+      }
+    }
+  }
   #downloads {
-    a {
+    span {
       display: inline-block;
+      margin: 0 .5em;
+    }
+    span::before {
+      content: "▸ ";
     }
   }
 }

@@ -78,18 +78,27 @@ $(document).ready( function() {
 
   function scrollPlay(){
 
-    var triggerBuffer = viewportHeight()/3;
+    // var triggerBuffer = viewportHeight()/3;
     // Hero video parent element position
-    if($('#hero').height()-viewportHeight() < scrollDistance() && $('#hero').hasClass('absolute') == false){
+
+    var animationScrollDistance = $('#hero').height()-viewportHeight();
+    var scrollDist = scrollDistance();
+    var absolute = $('#hero').hasClass('absolute');
+
+    if(animationScrollDistance < scrollDist && absolute == false){
       $('#hero').addClass('absolute');
-    }else if($('#hero').height()-viewportHeight() > scrollDistance() && $('#hero').hasClass('absolute') == true){
+      $('#hero').removeClass('fixed');
+    }else if(animationScrollDistance > scrollDist && absolute == true){
+      $('#hero').addClass('fixed');
       $('#hero').removeClass('absolute');
+    }else if(animationScrollDistance > scrollDist && absolute == false){
+      $('#hero').addClass('fixed');
     }
 
 
     var frameNumber  = 36;
-    if($('#hero').height()-viewportHeight()+150 > scrollDistance()){
-      var frameNumber  = Math.max(0, Math.round(scrollDistance()*frameNumber/($('#hero').height()-viewportHeight()+150)));
+    if(animationScrollDistance+150 > scrollDist) {
+      var frameNumber  = Math.max(0, Math.round(scrollDist*frameNumber/(animationScrollDistance+150)));
     }
 
     drawImage(frames[frameNumber]);
