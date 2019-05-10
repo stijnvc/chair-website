@@ -53,7 +53,7 @@ a {
 section, article {
   p, blockquote, img {
     display: block;
-    margin: 1em 0;
+    margin-bottom: 2em;
   }
   a {
     color: rgba(0, 100, 255, .8);
@@ -72,6 +72,7 @@ div, main, section, h1, h2, h3, h4, h5, h6, p, blockquote {
 h1,h2,h3 {
   font-weight: 300;
   line-height: 1.2;
+  margin-bottom: .8em;
 }
 h1 {
   font-size: 2em;
@@ -166,7 +167,7 @@ header {
   margin-right: auto;
   overflow: hidden;
 }
-main {
+#design main {
   max-width: $max-width;
   margin: 0 auto;
   overflow: hidden;
@@ -403,7 +404,52 @@ main {
       content: "▸ ";
     }
   }
+  #footer {
+    p {
+      margin: 1em 0;
+    }
+  }
 }
+#process header{
+  position: static;
+    margin-bottom: 2em;
+  border-bottom: 1px solid rgba(0,0,0,.1);
+}
+#process main {
+  img, video {
+    max-width: 100%;
+    width: 100%;
+  }
+  .wrapper {
+    max-width: $breaking-point-2;
+  }
+  section {
+    margin: 2em auto;
+  }
+  .text {
+    max-width: $breaking-point-3;
+    margin: 0 auto;
+    padding: 0 2em;
+  }
+  section.story {
+  //  margin-top: 200px;
+  }
+  span {
+    display: block;
+    margin: 0 .5em;
+  }
+  span::before {
+    content: "▸ ";
+  }
+  hr {
+    border:none;
+    height: 1px;
+    width: 100%;
+    background-color: rgba(0,0,0,.1);
+    margin: 2em 0;
+  }
+}
+
 .fade {
   opacity: 0;
   -webkit-transition: opacity 1s ease;
